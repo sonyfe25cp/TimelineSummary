@@ -3,7 +3,6 @@
  */
 package process;
 
-import java.io.File;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -21,21 +20,21 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.index.TermFreqVector;
 import org.apache.lucene.store.Directory;
-import org.apache.lucene.store.MMapDirectory;
 import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
-import org.wltea.analyzer.lucene.IKAnalyzer;
 
 import pojo.Sentence;
 import service.SentenceService;
-
-import edu.bit.dlde.utils.DLDEConfiguration;
 
 /**
  * @author zhangchangmin
  *
  */
 public class Evaluation {
+	
+	private double recall;
+	private double precise;
+	private double fValue;
 
 	
 	Preprocess pre=new Preprocess();
@@ -99,12 +98,13 @@ public class Evaluation {
 				i=i+1;
 			}
 		}
-		double recall=i/termManual.size();
-		double precise=i/termAuto.size();
-		double FValue=(2*recall*precise)/(recall+precise);
+		recall=i/termManual.size();
+		precise=i/termAuto.size();
+		fValue=(2*recall*precise)/(recall+precise);
 //		System.out.println(termManual.size()+"\t"+termAuto.size());
 		System.out.println("召回率="+recall);
 		System.out.println("精确率="+precise);
-		System.out.println("F值="+FValue);
+		System.out.println("F值="+fValue);
 	}
+	
 }

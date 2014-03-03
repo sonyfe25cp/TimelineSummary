@@ -30,9 +30,9 @@ public class DAO {
 		if(dataSource == null){
 			BasicDataSource basicDataSource = new BasicDataSource();
 			basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-			basicDataSource.setUrl("jdbc:mysql://localhost:3306/tac?useUnicode=true");
+			basicDataSource.setUrl("jdbc:mysql://localhost:3306/textsummary?useUnicode=true");
 			basicDataSource.setUsername("root");
-			basicDataSource.setPassword("1234");
+			basicDataSource.setPassword("");
 			dataSource = basicDataSource;
 		}
 	}

@@ -1,19 +1,19 @@
-1、新建MySQL数据库tac
-2、把sentence.sql导入到tac中
-3、在tac中新建数据表last
+1锟斤拷锟铰斤拷MySQL锟斤拷菘锟絫ac
+2锟斤拷锟斤拷sentence.sql锟斤拷锟诫到tac锟斤拷
+3锟斤拷锟斤拷tac锟斤拷锟铰斤拷锟斤拷荼锟絣ast
 create table last(
 id  int NOT NULL  PRIMARY KEY ,
 date  varchar(10) NOT NULL ,
 sentences  text NULL ,
 termWeight  text NULL ,
 energy  text NULL ,
-summary  text NULL ,
+summary  text NULL 
 );
-4.运行src/main/process/SummaryRun.java中的测试方法即可：
-所有的自动文摘方法都在一个测试类SummaryRun中测试，对应关系如下：
-AIL        对应testAIL()
-AIL1      对应testAIL_noenergy()
-AIL2      对应testAIL_nolsa()
-Allan      对应testAllan()
-Centroid 对应testCentroid()
+4.锟斤拷锟斤拷src/main/process/SummaryRun.java锟叫的诧拷锟皆凤拷锟斤拷锟斤拷锟缴ｏ拷
+锟斤拷锟叫碉拷锟皆讹拷锟斤拷摘锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷SummaryRun锟叫诧拷锟皆ｏ拷锟斤拷应锟斤拷系锟斤拷锟铰ｏ拷
+AIL        锟斤拷应testAIL()
+AIL1      锟斤拷应testAIL_noenergy()
+AIL2      锟斤拷应testAIL_nolsa()
+Allan      锟斤拷应testAllan()
+Centroid 锟斤拷应testCentroid()
 
