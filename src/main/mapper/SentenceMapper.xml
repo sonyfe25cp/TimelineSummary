@@ -20,4 +20,8 @@
 	<select id="getSummary" resultType="pojo.Sentence">
 		select id, sentence_id as sentenceId, sentence_content as sentenceContent , docName, eventName, isSummary , total from sentence where eventName= #{eventName} and isSummary= #{isSummary}
 	</select>
+	<insert id="insert" parameterType="pojo.Sentence">
+		insert into sentence(sentence_id, sentence_content, docName, eventName, publishDate, total) 
+			values(#{sentenceId}, #{sentenceContent}, #{docName}, #{eventName}, #{publishDate}, #{total})
+	</insert>
 </mapper>

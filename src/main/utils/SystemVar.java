@@ -7,6 +7,6 @@ public class SystemVar {
 	
 	public static String JDBCUser = "root";
 	
-	public static String JDBCPass = "123iop";
+	public static String JDBCPass = "";
 	
 }

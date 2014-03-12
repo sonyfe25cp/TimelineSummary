@@ -27,6 +27,11 @@ public class SentenceService extends Service{
 		return sentenceMapper.getSummary(eventName, isSummary);
 	}
 	
+	public void insert(Sentence sentence){
+		sentenceMapper.insert(sentence);
+		commit();
+	}
+	
 	public SentenceMapper getSentenceMapper() {
 		return sentenceMapper;
 	}

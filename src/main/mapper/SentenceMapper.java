@@ -22,4 +22,6 @@ public interface SentenceMapper {
 	
 	public List<Sentence> getSummary(@Param("eventName")String eventName,@Param("isSummary")String isSummary);
 
+	public void insert(Sentence sentence);
+
 }

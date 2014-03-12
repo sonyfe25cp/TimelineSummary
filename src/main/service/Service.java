@@ -17,9 +17,9 @@ public class Service {
 	}
 
 	private void getSqlSession() {
+		SqlSessionFactory sqlSessionFactory = null;
 		String resource = "mybatis.xml";
 		InputStream inputStream;
-		SqlSessionFactory sqlSessionFactory = null;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
 			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
@@ -27,5 +27,8 @@ public class Service {
 			e.printStackTrace();
 		}
 		this.session = sqlSessionFactory.openSession();
+	}
+	public void commit(){
+		session.commit();
 	}
 }
