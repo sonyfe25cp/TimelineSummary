@@ -3,11 +3,12 @@ package pojo;
 public class Sentence {
 
 	private int id;
-	private int sentenceId;
-	private String sentenceContent;
-	private String docName;
-	private String eventName;
-	private String isSummary;
+	private int sentenceId;//句子id
+	private String sentenceContent;//句子内容
+	private String docName;//文件名
+	private String eventName;//事件名
+	private String isSummary;//是否是摘要
+	private String publishDate;//发布时间
 	private int total;
 	/**
 	 * @return the id
@@ -92,6 +93,12 @@ public class Sentence {
 	 */
 	public void setTotal(int total) {
 		this.total = total;
+	}
+	public String getPublishDate() {
+		return publishDate;
+	}
+	public void setPublishDate(String publishDate) {
+		this.publishDate = publishDate;
 	}
 	
 }

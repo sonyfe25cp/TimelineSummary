@@ -24,7 +24,6 @@ import Jama.Matrix;
 import compare.Centroid;
 
 /**
- * @author zhangchangmin
  *
  */
 public class SummaryRun extends TestCase{

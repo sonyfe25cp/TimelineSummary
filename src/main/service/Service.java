@@ -11,20 +11,19 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 public class Service {
 
 	SqlSession session;
-	
-	public Service(){
+
+	public Service() {
 		getSqlSession();
 	}
-	private void getSqlSession(){
+
+	private void getSqlSession() {
 		String resource = "mybatis.xml";
 		InputStream inputStream;
 		SqlSessionFactory sqlSessionFactory = null;
 		try {
 			inputStream = Resources.getResourceAsStream(resource);
-			sqlSessionFactory = new SqlSessionFactoryBuilder()
-					.build(inputStream);
+			sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		this.session = sqlSessionFactory.openSession();

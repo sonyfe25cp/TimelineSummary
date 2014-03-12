@@ -18,6 +18,7 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSource;
 
 import pojo.Sentence;
+import utils.SystemVar;
 
 /**
  * @author zhangchangmin
@@ -30,14 +31,14 @@ public class DAO {
 		if(dataSource == null){
 			BasicDataSource basicDataSource = new BasicDataSource();
 			basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
-			basicDataSource.setUrl("jdbc:mysql://localhost:3306/textsummary?useUnicode=true");
-			basicDataSource.setUsername("root");
-			basicDataSource.setPassword("");
+			basicDataSource.setUrl(SystemVar.JDBCUrl);
+			basicDataSource.setUsername(SystemVar.JDBCUser);
+			basicDataSource.setPassword(SystemVar.JDBCPass);
 			dataSource = basicDataSource;
 		}
 	}
-	final String SQL_SELECT_BY_ID = "select * from Last where id = ?";
-	final String SQL_INSERT = "insert into Last(id,date,sentences,termWeight,energy,summary) values(?,?,?,?,?,?)";
+	final String SQL_SELECT_BY_ID = "select * from last where id = ?";
+	final String SQL_INSERT = "insert into last(id,date,sentences,termWeight,energy,summary) values(?,?,?,?,?,?)";
 	final String SQL_INSERT_SENTENCE="insert into sentence(sentence_id, sentence_content, docName," +
 			"eventName,isSummary,total) values (?,?,?,?,?,?)";
 	final String SQL_TRUNCATE="truncate last";
