@@ -32,10 +32,16 @@ public class SentenceService extends Service{
 		commit();
 	}
 	
+	public List<String> getEventTasks(){
+		return sentenceMapper.getEventTasks(); 
+	}
+	
+	
 	public SentenceMapper getSentenceMapper() {
 		return sentenceMapper;
 	}
 	public void setSentenceMapper(SentenceMapper sentenceMapper) {
 		this.sentenceMapper = sentenceMapper;
 	}
+	
 }

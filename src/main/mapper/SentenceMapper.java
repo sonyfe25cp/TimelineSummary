@@ -24,4 +24,6 @@ public interface SentenceMapper {
 
 	public void insert(Sentence sentence);
 
+	public List<String> getEventTasks();
+
 }

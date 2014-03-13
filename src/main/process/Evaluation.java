@@ -3,6 +3,7 @@
  */
 package process;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -89,7 +90,7 @@ public class Evaluation {
 		}
 		return termSet;
 	}
-	public void evalute(Set<String> termManual,Set<String> termAuto){
+	public Map<String, Double> evalute(Set<String> termManual,Set<String> termAuto){
 		Iterator<String> iter=termAuto.iterator();
 		double i=0.0;
 		while(iter.hasNext()){
@@ -102,9 +103,15 @@ public class Evaluation {
 		precise=i/termAuto.size();
 		fValue=(2*recall*precise)/(recall+precise);
 //		System.out.println(termManual.size()+"\t"+termAuto.size());
-		System.out.println("召回率="+recall);
-		System.out.println("精确率="+precise);
-		System.out.println("F值="+fValue);
+//		System.out.println("召回率="+recall);
+//		System.out.println("精确率="+precise);
+//		System.out.println("F值="+fValue);
+		Map<String, Double> map = new HashMap<String, Double>();
+		map.put("recall", recall);
+		map.put("precise", precise);
+		map.put("fvalue", fValue);
+		return map;
+		
 	}
 	
 }

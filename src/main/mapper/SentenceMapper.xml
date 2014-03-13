@@ -24,4 +24,8 @@
 		insert into sentence(sentence_id, sentence_content, docName, eventName, publishDate, total) 
 			values(#{sentenceId}, #{sentenceContent}, #{docName}, #{eventName}, #{publishDate}, #{total})
 	</insert>
+
+	<select id="getEventTasks" resultType="String">
+		select distinct(eventName) from sentence
+	</select>
 </mapper>
