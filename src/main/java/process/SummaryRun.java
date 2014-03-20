@@ -8,11 +8,15 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import junit.framework.TestCase;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import summarize.Diversity;
 import summarize.Diversity1;
 import summarize.LSA;
@@ -29,6 +33,8 @@ import compare.Centroid;
  */
 public class SummaryRun extends TestCase{
 
+	static Logger logger = LoggerFactory.getLogger(SummaryRun.class);
+	
 	private String eventName="D1001A";//事件名称
 	private Map<String, Map<String, Double>> resultsMap = new HashMap<String, Map<String, Double>>();
 	
@@ -65,9 +71,9 @@ public class SummaryRun extends TestCase{
 		doTrun.doTruncate();//删减last数据表
 		List<String[]> list=new ArrayList<String[]>();
 		Indexer4MyDoc i4m=new Indexer4MyDoc();
-		Map<String,List<MyDoc>> map=i4m.readFromDB(eventName);
-		List<String> timeline=new ArrayList<String>(map.keySet());
-		Collections.sort(timeline);
+		Map<String,List<MyDoc>> map=i4m.readFromDB(eventName);//时间-文档 组合
+		List<String> timeline=new ArrayList<>(map.keySet());
+		Collections.sort(timeline);//按时间排序
 		int i=1;
 		Preprocess pre=new Preprocess();
 		LSA lsa=new LSA();
@@ -75,6 +81,7 @@ public class SummaryRun extends TestCase{
 		MMR2 mmr=new MMR2();
 		Diversity1 div=new Diversity1();//计算cross-date diversity
 		for(String time:timeline){
+			logger.info("time : {}", time);
 			if(i==1){
 				List<DOC> tL=pre.catchTFIDF(time,map);
 				List<String> sL=pre.sentences(pre.segSentence(tL,time,map));
@@ -86,10 +93,10 @@ public class SummaryRun extends TestCase{
 				String[] summaryLast=mmr.summaryMMR(trmMapLast, pre.segSentence(tL),mL);////store
 				list.add(summaryLast);
 //				System.out.println(time);
-				for(int j=0;j<summaryLast.length;j++){
-					System.out.println(summaryLast[j]);
-				}
-				System.out.println();
+//				for(int j=0;j<summaryLast.length;j++){
+//					System.out.println(summaryLast[j]);
+//				}
+//				System.out.println();
 				Last last=new Last();
 				last.setId(i);
 				last.setDate(time);
@@ -170,7 +177,7 @@ public class SummaryRun extends TestCase{
 //				for(int j=0;j<summaryLast.length;j++){
 //					System.out.println(summaryLast[j]);
 //				}
-				System.out.println();
+//				System.out.println();
 				Last last=new Last();
 				last.setId(i);
 				last.setDate(time);
@@ -203,7 +210,7 @@ public class SummaryRun extends TestCase{
 //				for(int j=0;j<summaryToday.length;j++){
 //					System.out.println(summaryToday[j]);
 //				}
-				System.out.println();
+//				System.out.println();
 				Last last=new Last();
 				last.setId(i);
 				last.setDate(time);

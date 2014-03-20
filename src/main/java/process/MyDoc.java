@@ -9,7 +9,7 @@ import pojo.Sentence;
 
 /**
  * @author zhangchangmin
- *
+ * 
  */
 public class MyDoc {
 
@@ -17,53 +17,72 @@ public class MyDoc {
 	private String date;
 	private String time;
 	private List<Sentence> sentencesOfDoc;
+
+	
+	@Override
+	public String toString() {
+		return "MyDoc [docName=" + docName + ", date=" + date + ", time="
+				+ time + ", sentencesOfDoc=" + sentencesOfDoc + "]";
+	}
+
 	/**
 	 * @return the docName
 	 */
 	public String getDocName() {
 		return docName;
 	}
+
 	/**
-	 * @param docName the docName to set
+	 * @param docName
+	 *            the docName to set
 	 */
 	public void setDocName(String docName) {
 		this.docName = docName;
 	}
+
 	/**
 	 * @return the date
 	 */
 	public String getDate() {
 		return date;
 	}
+
 	/**
-	 * @param date the date to set
+	 * @param date
+	 *            the date to set
 	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
+
 	/**
 	 * @return the time
 	 */
 	public String getTime() {
 		return time;
 	}
+
 	/**
-	 * @param time the time to set
+	 * @param time
+	 *            the time to set
 	 */
 	public void setTime(String time) {
 		this.time = time;
 	}
+
 	/**
 	 * @return the sentencesOfDoc
 	 */
 	public List<Sentence> getSentencesOfDoc() {
 		return sentencesOfDoc;
 	}
+
 	/**
-	 * @param sentencesOfDoc the sentencesOfDoc to set
+	 * @param sentencesOfDoc
+	 *            the sentencesOfDoc to set
 	 */
 	public void setSentencesOfDoc(List<Sentence> sentencesOfDoc) {
 		this.sentencesOfDoc = sentencesOfDoc;
 	}
-	
+
 }
