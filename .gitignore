@@ -3,5 +3,4 @@ bin/
 *.jar
 target/
 .classpath
-.project
 .settings/
