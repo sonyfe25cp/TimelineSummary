@@ -39,15 +39,22 @@
 			<artifactId>weka-dev</artifactId>
 			<version>3.7.7</version>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>edu.bit.dlde</groupId>
 			<artifactId>dlde-commons</artifactId>
 			<version>1.0</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>gov.nist.math</groupId>
 			<artifactId>jama</artifactId>
 			<version>1.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 	<repositories>
