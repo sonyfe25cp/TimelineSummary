@@ -16,10 +16,11 @@ public class ParsePublicData {
 
 	public static void main(String[] args) {
 		ParsePublicData ppd = new ParsePublicData();
+		ppd.run();
 		ppd.runLabel();
 	}
 
-	private static String folderPath = "/Users/omar/data/Timeline17/Data";
+	private static String folderPath = "/Users/omar/Downloads/Timeline17/Data";
 	
 	private SentenceService sentenceService = new SentenceService();
 	
