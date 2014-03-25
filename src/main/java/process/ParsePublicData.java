@@ -20,20 +20,30 @@ public class ParsePublicData {
 		ppd.runLabel();
 	}
 
-	private static String folderPath = "/Users/omar/Downloads/Timeline17/Data";
+	private static String folderPath = "/Users/omar/data/Timeline17/Data";
 	
 	private SentenceService sentenceService = new SentenceService();
 	
 	private void run(){
 		List<Sentence> sentences = parse(new File(folderPath));
+		int count = 0; 
 		for(Sentence sentence : sentences){
 			sentenceService.insert(sentence);
+			count ++;
+			if(count %200 == 0){
+				System.out.println("run ~~ "+ count);
+			}
 		}
 	}
 	private void runLabel(){
 		List<Sentence> sentences = parseLabel(new File(folderPath));
+		int count = 0; 
 		for(Sentence sentence : sentences){
 			sentenceService.insert(sentence);
+			count ++;
+			if(count %200 == 0){
+				System.out.println("runLabel ~~ "+ count);
+			}
 		}
 	}
 	Pattern datePattern = Pattern.compile("^\\d+-\\d+-\\d+$");

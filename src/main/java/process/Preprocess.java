@@ -66,7 +66,7 @@ public class Preprocess {
 		return list;
 	}
 
-	// 分句,并存储句子位置信息
+	// 分句,并存储句子位置信息, 句子-[文档时间，句子序号，文档号]
 	public Map<String, int[]> segSentence(List<DOC> list, String date,
 			Map<String, List<MyDoc>> map) {
 		// List<String> sentenceList=new ArrayList<String>();
@@ -74,22 +74,19 @@ public class Preprocess {
 		Map<String, int[]> sentencePosMap = new LinkedHashMap<String, int[]>();
 		for (int index = 0; index < list.size(); index++) {
 			for (int i = 0; i < docList.size(); i++) {
-				if (docList.get(i).getDocName()
-						.equals(list.get(index).getDocName())) {
-					for (int j = 0; j < docList.get(i).getSentencesOfDoc()
-							.size(); j++) {
-						if (!sentencePosMap.containsKey(docList.get(i)
-								.getSentencesOfDoc().get(j)
-								.getSentenceContent())) {
+				if (docList.get(i).getDocName().equals(list.get(index).getDocName())) {
+					for (int j = 0; j < docList.get(i).getSentencesOfDoc().size(); j++) {
+						if (!sentencePosMap.containsKey(
+								docList.get(i).getSentencesOfDoc().get(j).getSentenceContent()
+								)
+							) {
 							int[] position = new int[3];
 							position[0] = list.get(index).getTime();// 文档时间
 							position[1] = j;// 句子序号
-							position[2] = Integer.parseInt(list.get(index)
-									.getDocId());// 文档id
+							position[2] = Integer.parseInt(list.get(index).getDocId());// 文档id
 							// System.out.println(docList.get(i).getSentencesOfDoc().get(j).getSentenceContent()+","+position[0]+","+position[1]+","+position[2]);
-							sentencePosMap.put(docList.get(i)
-									.getSentencesOfDoc().get(j)
-									.getSentenceContent(), position);
+							sentencePosMap.put(
+									docList.get(i).getSentencesOfDoc().get(j).getSentenceContent(), position);
 						}
 					}
 				}
@@ -391,12 +388,10 @@ public class Preprocess {
 	}
 
 	public Map<String, Double> initEnergy(List<DOC> tList, List<String> senList1) {
-		Set<String> termSet = termSet(tList);
-		List<String> termList = new ArrayList<String>();
-		termList.addAll(termSet);
-		int[][] senNum1 = statistic(termSet, senList1);
+		Set<String> termSet = termSet(tList);//该list中不重复出现的词set
+		List<String> termList = new ArrayList<>(termSet);//尼玛，又变成了list
+		int[][] senNum1 = statistic(termSet, senList1);//[0]:句子包含该词的个数，[1]:句子缺的词的个数
 		int[][] senNum2 = statistic(termSet.size(), senList1.size());
-		// double[] termkafang=new double[termSet.size()];
 		Map<String, Double> initEnergyMap = new LinkedHashMap<String, Double>();
 		for (int i = 0; i < termSet.size(); i++) {
 			double termkafang = alpha

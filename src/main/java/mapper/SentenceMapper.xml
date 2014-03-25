@@ -21,7 +21,7 @@
 		select id, sentence_id as sentenceId, sentence_content as sentenceContent , docName, eventName, isSummary , total from pub_sentence where eventName= #{eventName} and isSummary= #{isSummary}
 	</select>
 	<insert id="insert" parameterType="pojo.Sentence">
-		insert into pub_sentence(sentence_id, sentence_content, docName, eventName, publishDate, total) 
+		insert into pub_sentence(sentenceId, content, docName, eventName, publishDate, total) 
 			values(#{sentenceId}, #{sentenceContent}, #{docName}, #{eventName}, #{publishDate}, #{total})
 	</insert>
 

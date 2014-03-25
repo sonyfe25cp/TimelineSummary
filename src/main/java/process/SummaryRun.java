@@ -83,9 +83,9 @@ public class SummaryRun extends TestCase{
 		for(String time:timeline){
 			logger.info("time : {}", time);
 			if(i==1){
-				List<DOC> tL=pre.catchTFIDF(time,map);
-				List<String> sL=pre.sentences(pre.segSentence(tL,time,map));
-				Map<String,Double> tfidfL=pre.globalTFIDF(tL);
+				List<DOC> tL=pre.catchTFIDF(time,map);//对某天的文档进行了建索引和tfidf计算
+				Map<String,Double> tfidfL=pre.globalTFIDF(tL);//尼玛..就是词和idf值而已啊
+				List<String> sL=pre.sentences(pre.segSentence(tL,time,map));//尼玛，就是这一天的所有句子而已啊
 				Map<String,Double> initEnergy=pre.initEnergy(tL, sL);
 				Matrix matrixL=lsa.constructMatrix(tfidfL, sL);
 				Matrix mL=lsa.calSVD(matrixL);
